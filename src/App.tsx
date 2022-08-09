@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+// import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
 // pages
@@ -11,9 +11,14 @@ import { SingleCocktail } from "./pages/SingleCocktail";
 // components
 import { Navigation } from "./components/Navigation";
 
+// styles
+import { GlobalStyles } from "./styles/Global";
+
 function App() {
   return (
-    <div className="App">
+    // <div className="App">
+    <>
+      <GlobalStyles />
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -21,7 +26,8 @@ function App() {
         <Route path="/cocktail/:id" element={<SingleCocktail />} />
         <Route path="*" element={<Error />} />
       </Routes>
-    </div>
+    </>
+    // </div>
   );
 }
 
