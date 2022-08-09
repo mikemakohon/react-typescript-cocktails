@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
 import { useState, useEffect } from "react";
 
-export const useFetch = (url: string) => {
+export const useFetch = (url: string, domain?: string) => {
   const [data, setData] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean | null>(true);
   const [error, setError] = useState("");
@@ -10,7 +10,7 @@ export const useFetch = (url: string) => {
     try {
       setError("");
       const response = await axios.get(url);
-      setData(response.data);
+      setData(response.data[`${domain}`]);
     } catch (e: unknown) {
       const error = e as AxiosError;
       setError(error.message);

@@ -1,7 +1,7 @@
 import { useGlobalContext } from "../../context/AppContext";
 import { CircularProgress, Container, Grid } from "@mui/material";
 import { spacing } from "@mui/system";
-import { Cocktail } from "../Cocktail/Cocktail";
+import { Cocktail } from "../Cocktail";
 
 export const CocktailList = () => {
   const { cocktails, loading } = useGlobalContext();

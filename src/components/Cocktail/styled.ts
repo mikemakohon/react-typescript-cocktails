@@ -22,6 +22,8 @@ const handleColor = (color: string | undefined): string => {
       return "#44536d";
     case "old-fashioned glass":
       return "#e20000";
+    case "whiskey sour glass":
+      return "#4aa124";
 
     default:
       return "#000000";
