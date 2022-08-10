@@ -4,8 +4,8 @@ type GlassTypeContainerProps = {
   glassType?: string;
 };
 
-const handleColor = (color: string | undefined): string => {
-  switch (color) {
+const handleColor = (glassType: string | undefined): string => {
+  switch (glassType) {
     case "collins glass":
       return "#2986cc";
     case "cocktail glass":
@@ -32,5 +32,25 @@ const handleColor = (color: string | undefined): string => {
 
 export const GlassTypeContainer = styled.span<GlassTypeContainerProps>`
   font-weight: 700;
-  color: ${({ color }) => handleColor(color)};
+  color: ${({ glassType }) => handleColor(glassType)};
+`;
+
+type AlcoholContainerProps = {
+  alcoholInfo?: string;
+};
+
+const handleWeight = (alcoholInfo: string | undefined) => {
+  switch (alcoholInfo) {
+    case "Alcoholic":
+      return 700;
+    case "Non alcoholic":
+      return 400;
+
+    default:
+      return 500;
+  }
+};
+
+export const AlcoholContainer = styled.span<AlcoholContainerProps>`
+  font-weight: ${({ alcoholInfo }) => handleWeight(alcoholInfo)};
 `;

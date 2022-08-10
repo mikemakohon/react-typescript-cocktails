@@ -30,6 +30,7 @@ export const SearchForm = () => {
       {/* <input type="text" value={searchTerm} onChange={handleChange} /> */}
       <TextField
         id="search-title"
+        label="Cocktail"
         variant="outlined"
         value={searchTerm}
         onChange={handleChange}

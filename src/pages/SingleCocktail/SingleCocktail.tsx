@@ -4,12 +4,10 @@ import {
   Card,
   CardMedia,
   CardContent,
-  CardActionArea,
   Typography,
   Button,
   CircularProgress,
 } from "@mui/material";
-import { spacing } from "@mui/system";
 import { GlassTypeContainer } from "../../components/Cocktail/styled";
 
 export const SingleCocktail = () => {
@@ -51,7 +49,7 @@ export const SingleCocktail = () => {
       <Card
         sx={{
           maxWidth: 400,
-          margin: "15px auto",
+          margin: "35px auto",
           padding: "10px",
         }}
       >

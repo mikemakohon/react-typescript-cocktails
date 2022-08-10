@@ -8,8 +8,7 @@ import {
   Button,
 } from "@mui/material";
 import { spacing } from "@mui/system";
-import { GlassTypeContainer } from "./styled";
-import { FaRegLightbulb } from "react-icons/fa";
+import { AlcoholContainer, GlassTypeContainer } from "./styled";
 
 type CocktailProps = {
   image: string;
@@ -26,12 +25,13 @@ export const Cocktail = ({ image, name, id, info, glass }: CocktailProps) => {
         <Link style={{ textDecoration: "none" }} to={`/cocktail/${id}`}>
           <CardMedia component="img" height="250" image={image} alt={name} />
           <CardContent>
-            <Typography sx={{ minHeight: 65 }} variant="h5" component="div">
+            <Typography sx={{ minHeight: 65 }} variant="h5" color="secondary">
               {name}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {info}, glass:
-              <GlassTypeContainer color={glass.toLowerCase()}>
+            <Typography variant="body1" color="text.secondary">
+              <AlcoholContainer alcoholInfo={info}> {info}</AlcoholContainer>{" "}
+              <br /> glass:
+              <GlassTypeContainer glassType={glass.toLowerCase()}>
                 {glass.toLowerCase()}
               </GlassTypeContainer>
             </Typography>

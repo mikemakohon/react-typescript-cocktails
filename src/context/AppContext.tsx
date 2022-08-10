@@ -34,7 +34,7 @@ const AppContext = createContext<IAppContextInterface>({
 
 const AppProvider = ({ children }: any) => {
   const [loading, setLoading] = useState(true);
-  const [searchTerm, setSearchTerm] = useState("a");
+  const [searchTerm, setSearchTerm] = useState("");
   const [cocktails, setCocktails] = useState([]);
 
   const debouncedTerm = useDebounce(searchTerm);
