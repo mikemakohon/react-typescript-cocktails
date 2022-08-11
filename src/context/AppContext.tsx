@@ -41,6 +41,7 @@ const AppProvider = ({ children }: any) => {
 
   const fetchDrinks = useCallback(async () => {
     setLoading(true);
+
     fetch(`${url}${debouncedTerm}`)
       .then((res) => res.json())
       .then((res) => {
@@ -56,6 +57,7 @@ const AppProvider = ({ children }: any) => {
             glass: strGlass,
           };
         });
+
         setCocktails(newCocktails ?? []);
       })
       .catch(console.log)
@@ -65,6 +67,7 @@ const AppProvider = ({ children }: any) => {
   useEffect(() => {
     void fetchDrinks();
   }, [debouncedTerm, fetchDrinks]);
+
   return (
     <AppContext.Provider
       value={{ loading, cocktails, searchTerm, setSearchTerm }}

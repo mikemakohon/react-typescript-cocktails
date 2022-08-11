@@ -8,7 +8,10 @@ import {
   Button,
   CircularProgress,
 } from "@mui/material";
-import { GlassTypeContainer } from "../../components/Cocktail/styled";
+import { spacing } from "@mui/system";
+import { GlassTypeWrapper } from "../../components/Cocktail/styled";
+import { AlcoholWrapper } from "../../components/Cocktail/styled";
+import { IngredientWrapper } from "./styled";
 
 export const SingleCocktail = () => {
   const { id } = useParams();
@@ -43,6 +46,7 @@ export const SingleCocktail = () => {
     strIngredient4,
     strIngredient5,
   ];
+  console.log(ingredients);
 
   return (
     <>
@@ -55,21 +59,26 @@ export const SingleCocktail = () => {
       >
         <CardMedia component="img" height="450" image={image} alt={name} />
         <CardContent>
-          <Typography variant="h5" component="div">
+          <Typography variant="h5" component="div" color="secondary">
             {name}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {info}
+          <Typography variant="body1" color="text.primary">
+            <AlcoholWrapper alcoholInfo={info}> {info}</AlcoholWrapper>
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {category}
+          <Typography sx={{ py: 1 }} variant="body2">
+            Ingredients:
+            {ingredients.map((item: string, index: number) => {
+              return item ? (
+                <IngredientWrapper key={index}> {item}</IngredientWrapper>
+              ) : null;
+            })}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
-            <GlassTypeContainer color={glass.toLowerCase()}>
+          <Typography variant="body1">
+            <GlassTypeWrapper glassType={glass.toLowerCase()}>
               {glass.toLowerCase()}
-            </GlassTypeContainer>
+            </GlassTypeWrapper>
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography sx={{ py: 1 }} variant="body2" color="text.secondary">
             {instructions}
           </Typography>
         </CardContent>

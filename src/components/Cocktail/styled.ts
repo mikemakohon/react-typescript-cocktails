@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-type GlassTypeContainerProps = {
+type GlassTypeWrapperProps = {
   glassType?: string;
 };
 
@@ -30,16 +30,16 @@ const handleColor = (glassType: string | undefined): string => {
   }
 };
 
-export const GlassTypeContainer = styled.span<GlassTypeContainerProps>`
+export const GlassTypeWrapper = styled.span<GlassTypeWrapperProps>`
   font-weight: 700;
   color: ${({ glassType }) => handleColor(glassType)};
 `;
 
-type AlcoholContainerProps = {
+type AlcoholWrapperProps = {
   alcoholInfo?: string;
 };
 
-const handleWeight = (alcoholInfo: string | undefined) => {
+const handleWeight = (alcoholInfo: string | undefined): number => {
   switch (alcoholInfo) {
     case "Alcoholic":
       return 700;
@@ -51,6 +51,6 @@ const handleWeight = (alcoholInfo: string | undefined) => {
   }
 };
 
-export const AlcoholContainer = styled.span<AlcoholContainerProps>`
+export const AlcoholWrapper = styled.span<AlcoholWrapperProps>`
   font-weight: ${({ alcoholInfo }) => handleWeight(alcoholInfo)};
 `;

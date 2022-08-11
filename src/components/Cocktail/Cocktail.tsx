@@ -8,7 +8,7 @@ import {
   Button,
 } from "@mui/material";
 import { spacing } from "@mui/system";
-import { AlcoholContainer, GlassTypeContainer } from "./styled";
+import { AlcoholWrapper, GlassTypeWrapper } from "./styled";
 
 type CocktailProps = {
   image: string;
@@ -29,11 +29,11 @@ export const Cocktail = ({ image, name, id, info, glass }: CocktailProps) => {
               {name}
             </Typography>
             <Typography variant="body1" color="text.secondary">
-              <AlcoholContainer alcoholInfo={info}> {info}</AlcoholContainer>{" "}
-              <br /> glass:
-              <GlassTypeContainer glassType={glass.toLowerCase()}>
+              <AlcoholWrapper alcoholInfo={info}> {info}</AlcoholWrapper> <br />{" "}
+              glass:
+              <GlassTypeWrapper glassType={glass.toLowerCase()}>
                 {glass.toLowerCase()}
-              </GlassTypeContainer>
+              </GlassTypeWrapper>
             </Typography>
           </CardContent>
         </Link>
