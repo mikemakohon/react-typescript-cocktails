@@ -1,22 +1,16 @@
-import React from "react";
-// import "./App.css";
 import { Routes, Route } from "react-router-dom";
 
-// pages
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
-import { Error } from "./pages/Error";
+import { Error } from "./components/common/Error";
 import { SingleCocktail } from "./pages/SingleCocktail";
 
-// components
 import { Navigation } from "./components/Navigation";
 
-// styles
 import { GlobalStyles } from "./styles/Global";
 
 function App() {
   return (
-    // <div className="App">
     <>
       <GlobalStyles />
       <Navigation />
@@ -27,7 +21,6 @@ function App() {
         <Route path="*" element={<Error />} />
       </Routes>
     </>
-    // </div>
   );
 }
 

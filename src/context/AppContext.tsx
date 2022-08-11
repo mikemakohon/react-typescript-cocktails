@@ -1,30 +1,13 @@
 import {
   createContext,
-  Dispatch,
-  SetStateAction,
   useCallback,
   useContext,
   useEffect,
   useState,
 } from "react";
+import { IAppContextInterface } from "../utils/types";
 import { useDebounce } from "../hooks/useDebounce";
-
-const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
-
-interface IAppContextInterface {
-  loading: boolean;
-  cocktails: Cocktail[];
-  searchTerm: string;
-  setSearchTerm?: Dispatch<SetStateAction<string>>;
-}
-
-type Cocktail = {
-  id: string;
-  name: string;
-  image: string;
-  info: string;
-  glass: string;
-};
+import { getCocktails } from "../api/cocktails";
 
 const AppContext = createContext<IAppContextInterface>({
   loading: false,
@@ -42,19 +25,23 @@ const AppProvider = ({ children }: any) => {
   const fetchDrinks = useCallback(async () => {
     setLoading(true);
 
-    fetch(`${url}${debouncedTerm}`)
-      .then((res) => res.json())
+    getCocktails(debouncedTerm)
       .then((res) => {
         const newCocktails = res.drinks?.map((item: any) => {
-          const { idDrink, strDrink, strDrinkThumb, strAlcoholic, strGlass } =
-            item;
+          const {
+            idDrink: id,
+            strDrink: name,
+            strDrinkThumb: image,
+            strAlcoholic: info,
+            strGlass: glass,
+          } = item;
 
           return {
-            id: idDrink,
-            name: strDrink,
-            image: strDrinkThumb,
-            info: strAlcoholic,
-            glass: strGlass,
+            id,
+            name,
+            image,
+            info,
+            glass,
           };
         });
 
