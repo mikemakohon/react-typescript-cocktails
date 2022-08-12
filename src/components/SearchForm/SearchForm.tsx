@@ -1,7 +1,6 @@
 import { useGlobalContext } from "../../context/AppContext";
-import { SyntheticEvent, useCallback, ChangeEvent } from "react";
+import { useCallback, ChangeEvent } from "react";
 import { TextField } from "@mui/material";
-import { useDebounce } from "../../hooks/useDebounce";
 
 export const SearchForm = () => {
   const { searchTerm, setSearchTerm } = useGlobalContext();

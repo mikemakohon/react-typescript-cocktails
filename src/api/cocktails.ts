@@ -1,22 +1,17 @@
 import client from "./client";
+import { CocktailsResponse } from "../utils/types";
 
-export const getCocktails = async (term?: string) => {
+export const getCocktails = async (term = ""): Promise<CocktailsResponse> => {
   try {
-    if (term) {
-      const cocktails = await client.get(`/search.php?s=${term}`);
-      return cocktails;
-    }
-    const cocktails = await client.get("/search.php?s=");
-    return cocktails;
+    return await client.get(`/search.php?s=${term}`);
   } catch (error) {
     return Promise.reject(error);
   }
 };
 
-export const getCocktail = async (id: string) => {
+export const getCocktail = async (id: string): Promise<CocktailsResponse> => {
   try {
-    const cocktail = await client.get(`/lookup.php?i=${id}`);
-    return cocktail;
+    return await client.get(`/lookup.php?i=${id}`);
   } catch (error) {
     return Promise.reject(error);
   }

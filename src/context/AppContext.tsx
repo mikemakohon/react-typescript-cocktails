@@ -5,7 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { IAppContextInterface } from "../utils/types";
+import {Cocktail, IAppContextInterface} from "../utils/types";
 import { useDebounce } from "../hooks/useDebounce";
 import { getCocktails } from "../api/cocktails";
 
@@ -18,7 +18,7 @@ const AppContext = createContext<IAppContextInterface>({
 const AppProvider = ({ children }: any) => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
-  const [cocktails, setCocktails] = useState([]);
+  const [cocktails, setCocktails] = useState<Cocktail[]>([]);
 
   const debouncedTerm = useDebounce(searchTerm);
 
@@ -27,7 +27,7 @@ const AppProvider = ({ children }: any) => {
 
     getCocktails(debouncedTerm)
       .then((res) => {
-        const newCocktails = res.drinks?.map((item: any) => {
+        const newCocktails = res.drinks?.map((item) => {
           const {
             idDrink: id,
             strDrink: name,
