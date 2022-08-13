@@ -1,25 +1,30 @@
 import { Routes, Route } from "react-router-dom";
 
-import { Home } from "./pages/Home";
-import { About } from "./pages/About";
-import { Error } from "./components/common/Error";
-import { SingleCocktail } from "./pages/SingleCocktail";
-
 import { Navigation } from "./components/Navigation";
 
 import { GlobalStyles } from "./styles/Global";
+import { lazy, Suspense } from "react";
+import {CircularProgress} from "@mui/material";
+
+const Home = lazy(() => import('./pages/Home/Home'));
+const About = lazy(() => import('./pages/About/About'));
+const SingleCocktail = lazy(() => import('./pages/SingleCocktail/SingleCocktail'));
+const Error = lazy(() => import('./pages/Error/Error'));
 
 function App() {
   return (
     <>
       <GlobalStyles />
       <Navigation />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/cocktail/:id" element={<SingleCocktail />} />
-        <Route path="*" element={<Error />} />
-      </Routes>
+        <Suspense fallback={<CircularProgress />}>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/cocktail/:id" element={<SingleCocktail />} />
+                <Route path="*" element={<Error />} />
+            </Routes>
+        </Suspense>
+
     </>
   );
 }

@@ -20,3 +20,5 @@ export const Error = () => {
     </ErrorContainer>
   );
 };
+
+export default Error;

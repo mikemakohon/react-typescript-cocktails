@@ -25,3 +25,5 @@ export const About = () => {
     </StyledContainer>
   );
 };
+
+export default About;
