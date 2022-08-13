@@ -15,7 +15,11 @@ export const StyledNav = styled.nav`
   justify-content: space-between;
   align-items: center;
   color: #ffffff;
-  background-color: #35e5a0;
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgb(15, 213, 172) 0%,
+    rgb(34, 182, 198) 100.2%
+  );
 `;
 
 export const StyledNavLink = styled(NavLink)`
