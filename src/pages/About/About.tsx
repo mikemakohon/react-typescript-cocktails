@@ -4,7 +4,6 @@ import {
   StyledProfilePicture,
   StyledSubtitle,
 } from "./styled";
-import { Link } from "react-router-dom";
 import { Typography } from "@mui/material";
 
 export const About = () => {

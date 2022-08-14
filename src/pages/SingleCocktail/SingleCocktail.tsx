@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import {
   Box,
@@ -20,7 +20,7 @@ import { Cocktail } from "../../utils/types";
 import { youtubeClient } from "../../api/youtube";
 import { Error } from "../Error";
 import { Spinner } from "../../components/common/Spinner";
-import { isTypedArray } from "util/types";
+import { FAVORITE_LOCAL_KEY } from "../../utils/constants";
 
 export const SingleCocktail = () => {
   const { id } = useParams();
@@ -30,25 +30,31 @@ export const SingleCocktail = () => {
   const [videoURL, setVideoURL] = useState("");
 
   const [localItems, setLocalItems] = useState(() => {
-    return JSON.parse(localStorage.getItem("favorites") || "[]");
+    return JSON.parse(localStorage.getItem(FAVORITE_LOCAL_KEY) || "[]");
   });
 
-  const onFavToggle = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    if (event.target.checked === true) {
-      const newItems = localItems.filter(
-        (item: Cocktail) => item.name !== cocktail?.name
-      );
+  const isInFavorite = useMemo(() => {
+    return localItems.some((item: Cocktail) => {
+      return item.name === cocktail?.name;
+    });
+  }, [localItems, cocktail]);
 
-      console.log(newItems);
-      console.log(localItems);
-      // localItems.forEach((item: Cocktail) => console.log(item.name));
-      setLocalItems([...newItems]);
-      localStorage.setItem("favorites", JSON.stringify(newItems));
+  const onFavToggle = (event: ChangeEvent<HTMLInputElement>): void => {
+    if (event.target.checked) {
+      setLocalItems([...localItems, cocktail]);
+      localStorage.setItem(
+        FAVORITE_LOCAL_KEY,
+        JSON.stringify([...localItems, cocktail])
+      );
       return;
     }
 
-    setLocalItems([...localItems, cocktail]);
-    localStorage.setItem("favorites", JSON.stringify(localItems));
+    const newItems = localItems.filter(
+      (item: Cocktail) => item.name !== cocktail?.name
+    );
+
+    setLocalItems([...newItems]);
+    localStorage.setItem(FAVORITE_LOCAL_KEY, JSON.stringify(newItems));
   };
 
   useEffect(() => {
@@ -96,7 +102,7 @@ export const SingleCocktail = () => {
       })
       .then((data) => {
         setVideoURL(
-          `http://www.youtube.com/embed/${data.data.items[0].id.videoId}`
+          `https://www.youtube.com/embed/${data.data.items[0].id.videoId}`
         );
       })
       .catch((err) => console.log(err));
@@ -130,8 +136,10 @@ export const SingleCocktail = () => {
     <Container>
       <StyledCard>
         <Checkbox
-          onChange={(event) => onFavToggle(event)}
+          onChange={onFavToggle}
           icon={<FavoriteBorder />}
+          value={isInFavorite}
+          checked={isInFavorite}
           checkedIcon={<Favorite />}
         />
         <CardMedia

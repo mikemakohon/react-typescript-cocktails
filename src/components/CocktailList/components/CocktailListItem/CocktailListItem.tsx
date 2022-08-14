@@ -11,8 +11,8 @@ import { Cocktail } from "../../../../utils/types";
 
 const CocktailListItem = ({ image, name, id, info, glass }: Cocktail) => {
   return (
-    <Card sx={{ maxWidth: 400 }}>
-      <CardActionArea>
+    <Card sx={{ maxWidth: 400, margin: "0 auto" }}>
+      <CardActionArea disabled={!id}>
         <Link style={{ textDecoration: "none" }} to={`/cocktail/${id}`}>
           <CardMedia component="img" height="250" image={image} alt={name} />
           <CardContent>
