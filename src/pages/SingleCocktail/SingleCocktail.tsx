@@ -4,10 +4,11 @@ import {
   Box,
   CardContent,
   CardMedia,
-  CircularProgress,
   Container,
   Typography,
+  Checkbox,
 } from "@mui/material";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import { Button } from "../../components/common/Button";
 import {
   AlcoholWrapper,
@@ -18,6 +19,8 @@ import { getCocktail } from "../../api/cocktails";
 import { Cocktail } from "../../utils/types";
 import { youtubeClient } from "../../api/youtube";
 import { Error } from "../Error";
+import { Spinner } from "../../components/common/Spinner";
+import { isTypedArray } from "util/types";
 
 export const SingleCocktail = () => {
   const { id } = useParams();
@@ -25,6 +28,28 @@ export const SingleCocktail = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [videoURL, setVideoURL] = useState("");
+
+  const [localItems, setLocalItems] = useState(() => {
+    return JSON.parse(localStorage.getItem("favorites") || "[]");
+  });
+
+  const onFavToggle = (event: React.ChangeEvent<HTMLInputElement>): void => {
+    if (event.target.checked === true) {
+      const newItems = localItems.filter(
+        (item: Cocktail) => item.name !== cocktail?.name
+      );
+
+      console.log(newItems);
+      console.log(localItems);
+      // localItems.forEach((item: Cocktail) => console.log(item.name));
+      setLocalItems([...newItems]);
+      localStorage.setItem("favorites", JSON.stringify(newItems));
+      return;
+    }
+
+    setLocalItems([...localItems, cocktail]);
+    localStorage.setItem("favorites", JSON.stringify(localItems));
+  };
 
   useEffect(() => {
     if (!id) {
@@ -81,7 +106,7 @@ export const SingleCocktail = () => {
     return (
       <Container>
         <Box sx={{ p: 2 }}>
-          <CircularProgress />
+          <Spinner />
         </Box>
       </Container>
     );
@@ -104,6 +129,11 @@ export const SingleCocktail = () => {
   return (
     <Container>
       <StyledCard>
+        <Checkbox
+          onChange={(event) => onFavToggle(event)}
+          icon={<FavoriteBorder />}
+          checkedIcon={<Favorite />}
+        />
         <CardMedia
           component="img"
           height="450"

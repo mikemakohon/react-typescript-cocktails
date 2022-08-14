@@ -5,7 +5,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import {Cocktail, IAppContextInterface} from "../utils/types";
+import { Cocktail, IAppContextInterface } from "../utils/types";
 import { useDebounce } from "../hooks/useDebounce";
 import { getCocktails } from "../api/cocktails";
 
