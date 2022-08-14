@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/react-typescript-cocktails/static/js/main.444f558c.js",
+    "main.js": "/react-typescript-cocktails/static/js/main.7b6af4df.js",
     "static/js/211.bd62ac62.chunk.js": "/react-typescript-cocktails/static/js/211.bd62ac62.chunk.js",
     "static/js/617.d9f3af36.chunk.js": "/react-typescript-cocktails/static/js/617.d9f3af36.chunk.js",
     "static/js/177.04ef3fce.chunk.js": "/react-typescript-cocktails/static/js/177.04ef3fce.chunk.js",
@@ -14,7 +14,7 @@
     "static/js/458.dcef577c.chunk.js": "/react-typescript-cocktails/static/js/458.dcef577c.chunk.js",
     "static/media/profile.webp": "/react-typescript-cocktails/static/media/profile.695910c43210bf08274b.webp",
     "index.html": "/react-typescript-cocktails/index.html",
-    "main.444f558c.js.map": "/react-typescript-cocktails/static/js/main.444f558c.js.map",
+    "main.7b6af4df.js.map": "/react-typescript-cocktails/static/js/main.7b6af4df.js.map",
     "211.bd62ac62.chunk.js.map": "/react-typescript-cocktails/static/js/211.bd62ac62.chunk.js.map",
     "617.d9f3af36.chunk.js.map": "/react-typescript-cocktails/static/js/617.d9f3af36.chunk.js.map",
     "177.04ef3fce.chunk.js.map": "/react-typescript-cocktails/static/js/177.04ef3fce.chunk.js.map",
@@ -28,6 +28,6 @@
     "458.dcef577c.chunk.js.map": "/react-typescript-cocktails/static/js/458.dcef577c.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/main.444f558c.js"
+    "static/js/main.7b6af4df.js"
   ]
 }
