@@ -7,11 +7,11 @@ import { StyledContainer } from "./styled";
 export const CocktailList = () => {
   const { cocktails, loading } = useGlobalContext();
 
-  if (!cocktails.length) return <h2> ☹ No cocktails found </h2>;
+  if (!cocktails.length && !loading) return <h2> ☹ No cocktails found </h2>;
 
   return (
     <StyledContainer>
-      {loading && <Spinner />}
+      {loading && !cocktails && <Spinner />}
       {cocktails && !loading && (
         <Grid container>
           {cocktails.map((cocktail, index) => (

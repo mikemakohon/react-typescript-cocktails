@@ -10,15 +10,7 @@
   ],
   "rules": {
     // turn on errors for missing imports
-    "import/no-unresolved": "error"
-  },
-  "settings": {
-    "import/parsers": {
-      "@typescript-eslint/parser": [".ts", ".tsx"]
-    },
-    "import/resolver": {
-      "typescript": true,
-      "node": true
-    }
+    // "import/no-unresolved": "error"
+    "import/no-unresolved": [2, { "caseSensitive": false }]
   }
 }
