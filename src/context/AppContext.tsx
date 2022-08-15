@@ -1,4 +1,4 @@
-import {
+import React, {
   createContext,
   useCallback,
   useContext,
@@ -15,7 +15,11 @@ const AppContext = createContext<IAppContextInterface>({
   cocktails: [],
 });
 
-const AppProvider = ({ children }: any) => {
+interface AppProviderProps {
+  children: React.ReactNode;
+}
+
+const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState("");
   const [cocktails, setCocktails] = useState<Cocktail[]>([]);
