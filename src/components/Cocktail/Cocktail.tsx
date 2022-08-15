@@ -5,9 +5,7 @@ import {
   CardContent,
   CardActionArea,
   Typography,
-  Button,
 } from "@mui/material";
-import { spacing } from "@mui/system";
 import { AlcoholWrapper, GlassTypeWrapper } from "./styled";
 
 type CocktailProps = {

@@ -4,16 +4,6 @@ import { TextField } from "@mui/material";
 
 export const SearchForm = () => {
   const { searchTerm, setSearchTerm } = useGlobalContext();
-  // const debounced = useDebounce(searchTerm);
-
-  // const handleChange = useCallback(
-  //   (event: SyntheticEvent<HTMLInputElement>) => {
-  //     if (setSearchTerm && typeof setSearchTerm === "function") {
-  //       setSearchTerm(event.currentTarget.value);
-  //     }
-  //   },
-  //   [setSearchTerm]
-  // );
 
   const handleChange = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +16,6 @@ export const SearchForm = () => {
 
   return (
     <>
-      {/* <input type="text" value={searchTerm} onChange={handleChange} /> */}
       <TextField
         id="search-title"
         label="Cocktail"
