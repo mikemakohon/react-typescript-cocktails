@@ -1,6 +1,6 @@
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, HashRouter } from "react-router-dom";
 import { AppProvider } from "./context/AppContext";
 
 const root = ReactDOM.createRoot(
@@ -8,7 +8,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <AppProvider>
-    <BrowserRouter>
+    <BrowserRouter basename="/react-typescript-cocktails/">
       <App />
     </BrowserRouter>
   </AppProvider>
